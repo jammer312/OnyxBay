@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(storyteller)
 	wait = 20 // changes with round story progress
 	priority = SS_PRIORITY_STORYTELLER
 	init_order = SS_INIT_STORYTELLER
+	runlevels = RUNLEVEL_GAME
 
 	var/__was_character_choosen_by_random = FALSE
 
@@ -30,6 +31,16 @@ SUBSYSTEM_DEF(storyteller)
 	var/time_to_first_cycle = __character.process_round_start()
 	ASSERT(time_to_first_cycle)
 	wait = time_to_first_cycle
+
+// called in the round end
+/datum/controller/subsystem/storyteller/proc/collect_statistics()
+	if (!config.storyteller)
+		return
+	_log_debug("ROUND STATISTICS")
+	for (var/M in __metrics)
+		var/storyteller_metric/metric = __metrics[M]
+		metric.print_statistics()
+	_log_debug("ROUND STATISTICS END")
 
 /datum/controller/subsystem/storyteller/fire(resumed = FALSE)
 	if (GAME_STATE < RUNLEVEL_GAME)

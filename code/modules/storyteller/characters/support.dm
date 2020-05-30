@@ -18,6 +18,7 @@
 	USE_METRIC(/storyteller_metric/time_of_day, time_of_day)
 	USE_METRIC(/storyteller_metric/antagonists_danger, antagonists_danger)
 	USE_METRIC(/storyteller_metric/ghosts_count, ghosts_count)
+	USE_METRIC(/storyteller_metric/injuries_score, injuries_score)
 
 	_log_debug("station_characters_count [station_characters_count]")
 	_log_debug("security_manpower [security_manpower]")
@@ -25,6 +26,7 @@
 	_log_debug("time_of_day [time_of_day]")
 	_log_debug("antagonists_danger [antagonists_danger]")
 	_log_debug("ghosts_count [ghosts_count]")
+	_log_debug("injuries_score [injuries_score]")
 
 	var/security_advantage = security_manpower - antagonists_danger
 
