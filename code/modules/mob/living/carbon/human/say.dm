@@ -42,7 +42,9 @@
 	if(stat == CONSCIOUS)
 		if(client)
 			var/virgin = 1	//has the text been modified yet?
-			var/temp = winget(client, "input", "text")
+			var/temp = client.close_saywindow()
+			if (!temp)
+				temp = winget(client, "input", "text")
 			if(findtextEx(temp, "Say \"", 1, 7) && length(temp) > 5)	//case sensitive means
 				var/main_key = get_prefix_key(/decl/prefix/radio_main_channel)
 				temp = replacetext(temp, main_key, "")	//general radio
