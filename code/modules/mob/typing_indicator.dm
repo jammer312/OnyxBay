@@ -50,6 +50,7 @@ I IS TYPIN'!'
 
 /client/proc/show_saywindow()
 	winset(src, "saywindow", "is-visible=true;focus=true")
+	winset(src, "saywindow", "saywindow-input.focus=true")
 
 /client/proc/center_and_show_saywindow()
 	first_say = FALSE
@@ -76,7 +77,7 @@ I IS TYPIN'!'
 	winset(src, "saywindow", "is-visible=false;focus=false")
 	if (return_content)
 		. = winget(src, "saywindow.saywindow-input", "text")
-	winset(src, "saywindow.saywindow-input", "text=\"\"")
+	winset(src, null, "saywindow.saywindow-input.text=\"\";mainwindow.focus=true")
 
 /mob/verb/say_wrapper()
 	set name = "Say Verb"
